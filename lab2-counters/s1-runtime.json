@@ -1,0 +1,213 @@
+{
+  "target": "bmv2",
+  "p4info": "build/counters.p4.p4info.txtpb",
+  "bmv2_json": "build/counters.json",
+  "table_entries": [
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "default_action": true,
+      "action_name": "MyIngress.drop",
+      "action_params": {}
+    },
+    {
+      "table": "MyIngress.cfg_threshold",
+      "default_action": true,
+      "action_name": "MyIngress.set_threshold",
+      "action_params": {
+        "threshold": 1000000
+      }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": {
+        "hdr.ipv4.dstAddr": [
+          "10.0.1.0",
+          24
+        ]
+      },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": {
+        "srcMac": "08:00:00:01:01:00",
+        "dstMac": "08:00:00:00:01:11",
+        "port": 1
+      }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": {
+        "hdr.ipv4.dstAddr": [
+          "10.0.2.0",
+          24
+        ]
+      },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": {
+        "srcMac": "08:00:00:01:02:00",
+        "dstMac": "08:00:00:00:02:11",
+        "port": 2
+      }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": {
+        "hdr.ipv4.dstAddr": [
+          "10.0.3.0",
+          24
+        ]
+      },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": {
+        "srcMac": "08:00:00:01:03:00",
+        "dstMac": "08:00:00:00:03:11",
+        "port": 3
+      }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": {
+        "hdr.ipv4.dstAddr": [
+          "10.0.4.0",
+          24
+        ]
+      },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": {
+        "srcMac": "08:00:00:01:04:00",
+        "dstMac": "08:00:00:00:04:11",
+        "port": 4
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.1.1",
+        "hdr.ipv4.dstAddr": "10.0.2.2"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 1
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.1.1",
+        "hdr.ipv4.dstAddr": "10.0.3.3"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 2
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.1.1",
+        "hdr.ipv4.dstAddr": "10.0.4.4"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 3
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.2.2",
+        "hdr.ipv4.dstAddr": "10.0.1.1"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 4
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.2.2",
+        "hdr.ipv4.dstAddr": "10.0.3.3"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 5
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.2.2",
+        "hdr.ipv4.dstAddr": "10.0.4.4"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 6
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.3.3",
+        "hdr.ipv4.dstAddr": "10.0.1.1"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 7
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.3.3",
+        "hdr.ipv4.dstAddr": "10.0.2.2"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 8
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.3.3",
+        "hdr.ipv4.dstAddr": "10.0.4.4"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 9
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.4.4",
+        "hdr.ipv4.dstAddr": "10.0.1.1"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 10
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.4.4",
+        "hdr.ipv4.dstAddr": "10.0.2.2"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 11
+      }
+    },
+    {
+      "table": "MyIngress.flow_table",
+      "match": {
+        "hdr.ipv4.srcAddr": "10.0.4.4",
+        "hdr.ipv4.dstAddr": "10.0.3.3"
+      },
+      "action_name": "MyIngress.set_flow",
+      "action_params": {
+        "idx": 12
+      }
+    }
+  ]
+}
