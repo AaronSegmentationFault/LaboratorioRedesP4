@@ -1,4 +1,4 @@
-"""
+r"""
 topology.py - Genera topology.json y sX-runtime.json (formato de p4lang/tutorials).
 
 Topología (3 routers P4, 4 hosts en subredes distintas):
